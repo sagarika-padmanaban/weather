@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container,Row, Col } from 'react-bootstrap';
+import Home from './components/Home/Home';
+import Detail from './components/Details/Detail';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css'
+const App = () => {
+  const [search,setsearch] = useState(null);
+  const [post, setpost] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+    return (
+        <div>
+          <Container fluid>
+                <Row>
+                    <Col sm={9}><Home  search={search} post={post} setpost={setpost} loading={loading} setLoading={setLoading}/></Col>
+                    <Col sm={3} ><Detail setsearch={setsearch} search={search} post={post} setpost={setpost} loading={loading} setLoading={setLoading}/></Col>
+                </Row>
+            </Container>
+        
+        </div>
+    )
 }
 
-export default App;
+export default App
